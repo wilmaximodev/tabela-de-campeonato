@@ -24,4 +24,13 @@ describe('Teams Test', function() {
     expect(body).to.deep.equal(team);
   });  
   afterEach(sinon.restore);
+
+  it('Show one team', async function() {
+    sinon.stub(SequelizeTeam, 'findByPk').resolves(team as any);
+
+    const { status, body } = await chai.request(app).get('/teams/1');
+
+    expect(status).to.equal(200);
+    expect(body).to.deep.equal(team);
+  });
 });

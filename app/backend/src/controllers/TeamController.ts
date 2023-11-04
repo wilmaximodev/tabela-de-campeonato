@@ -11,4 +11,10 @@ export default class BookController {
     const { status, data } = await this.teamService.getAllTeams();
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async getTeamById(req: Request, res: Response) {
+    const { id } = req.params;
+    const { status, data } = await this.teamService.getTeamById(+id);
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }
