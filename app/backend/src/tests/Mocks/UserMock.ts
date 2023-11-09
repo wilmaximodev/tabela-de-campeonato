@@ -3,6 +3,16 @@ const validUser = {
   password: 'secret_admin',
 };
 
+const invalidEmail = {
+  email: '123.com',
+  password: 'secret_admin',
+};
+
+const invalidPassword = {
+  email: 'admin@admin.com',
+  password: '123456',
+};
+
 const users = [validUser];
 
 export const userMock = {
@@ -16,4 +26,6 @@ export const userMock = {
 export {
   validUser,
   users,
+  invalidEmail,
+  invalidPassword,
 }; 

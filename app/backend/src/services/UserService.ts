@@ -13,13 +13,8 @@ export default class UserService {
 
   public async login(data: IUser): Promise<ServiceResponse<Token>> {
     const user = await this.userModel.login(data.email);
-    console.log('Console na Service:', user);
-    if (!user) {
-      return { status: 'notFound', data: { message: 'Incorrect informations' } };
-    }
-    const isPasswordCorrect = bcrypt.compareSync(data.password, user.password);
-    if (!isPasswordCorrect) {
-      return { status: 'conflict', data: { message: 'KeyBroken' } };
+    if (!user || !bcrypt.compareSync(data.password, user.password)) {
+      return { status: 'invalidData', data: { message: 'All fields must be filled' } };
     }
 
     const { username, id, role, email } = user;

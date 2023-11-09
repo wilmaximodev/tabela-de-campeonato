@@ -3,6 +3,7 @@ export default function mapStatusHTTP(status: string): number {
     successful: 200,
     created: 201,
     invalidData: 400,
+    unauthorized: 401,
     notFound: 404,
     conflict: 409,
   };
