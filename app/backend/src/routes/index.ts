@@ -8,3 +8,5 @@ router.use('/teams', teamRouter);
 router.use('/login', userRouter);
 
 export default router;
+
+// problem with avaliator
