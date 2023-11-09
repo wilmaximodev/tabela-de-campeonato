@@ -1,21 +1,15 @@
 import * as jwt from 'jsonwebtoken';
 import { Payload } from '../types/Payload';
 
-const secret = process.env.JWT_SECRET || 'mySecretKey';
+const secret = process.env.JWT_SECRET ?? 'mySecretKey';
 
-const generateJwtToken = (payload: Payload): string => {
-  const token = jwt.sign(payload, secret, {
-    expiresIn: '1h',
-  });
-  return token;
-};
+export default class Token {
+  static generateJwtToken(payload: Payload): string {
+    return jwt.sign(payload, secret, { expiresIn: '7h' });
+  }
 
-const decodeJwtToken = (token: string): Payload => {
-  const response = jwt.verify(token, secret);
-  return response as Payload;
-};
-
-export default {
-  generateJwtToken,
-  decodeJwtToken,
-};
+  static decodeJwtToken(auth: string): Payload {
+    const token = auth.split(' ')[1];
+    return jwt.verify(token, secret) as Payload;
+  }
+}
