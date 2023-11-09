@@ -13,3 +13,4 @@ export default class Token {
     return jwt.verify(token, secret) as Payload;
   }
 }
+// Add coment
