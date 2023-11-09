@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import { Payload } from '../types/Payload';
 
-const secret = process.env.JWT_SECRET ?? 'mySecretKey';
+const secret = process.env.JWT_SECRET ?? 'jwt_secret';
 
 export default class Token {
   static generateJwtToken(payload: Payload): string {

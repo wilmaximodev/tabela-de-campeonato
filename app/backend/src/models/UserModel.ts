@@ -1,7 +1,8 @@
-import IUser from '../interfaces/users/IUser';
+import IUserModel from '../Interfaces/users/IUserModel';
+import IUser from '../Interfaces/users/IUser';
 import SequelizeUser from '../database/models/SequelizeUser';
 
-class UserModel {
+export default class UserModel implements IUserModel {
   private model = SequelizeUser;
 
   async login(email: string): Promise<IUser | null> {
@@ -13,5 +14,3 @@ class UserModel {
     return user?.role;
   }
 }
-
-export default UserModel;

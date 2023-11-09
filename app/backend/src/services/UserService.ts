@@ -1,8 +1,8 @@
 import * as bcrypt from 'bcrypt';
 import Token from '../auth/jwt';
 import UserModel from '../models/UserModel';
-import IUser from '../interfaces/users/IUser';
-import IUserModel from '../interfaces/users/IUserModel';
+import IUser from '../Interfaces/users/IUser';
+import IUserModel from '../Interfaces/users/IUserModel';
 import { ServiceResponse } from '../types/ServiceResponse';
 import { TokenType } from '../types/Token';
 

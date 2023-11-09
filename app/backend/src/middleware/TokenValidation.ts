@@ -4,7 +4,6 @@ import Token from '../auth/jwt';
 export default class TokenValidation {
   static verifyToken(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
-    console.log('console auth middleware:', authorization);
 
     if (!authorization) {
       return res.status(401).json({ message: 'Token not found' });
