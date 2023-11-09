@@ -5,5 +5,4 @@ RUN npm install
 COPY . .
 EXPOSE 3001
 
-ENTRYPOINT [ "npm" ]
-CMD [ "start" ]
+CMD ["npm", "start"]
