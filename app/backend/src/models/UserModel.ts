@@ -1,4 +1,4 @@
-import { IUser } from '../interfaces/users/IUser';
+import IUser from '../interfaces/users/IUser';
 import SequelizeUser from '../database/models/SequelizeUser';
 
 class UserModel {

@@ -1,5 +1,5 @@
-import { IUser } from './IUser';
+import IUser from './IUser';
 
-export default interface ITeamModel {
+export default interface IUserModel {
   login(email: string): Promise<IUser | null>
 }

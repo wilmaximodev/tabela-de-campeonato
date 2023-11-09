@@ -8,8 +8,7 @@ export default class UserController {
   ) { }
 
   public async login(req: Request, res: Response) {
-    const { email, password } = req.body;
-    const { status, data } = await this.userService.login(email, password);
+    const { status, data } = await this.userService.login(req.body);
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }
