@@ -21,12 +21,9 @@ export default class UserService {
     if (!isPasswordCorrect) {
       return { status: 'conflict', data: { message: 'KeyBroken' } };
     }
-    const token = jwt.generateJwtToken({
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      role: user.role,
-    });
+
+    const { username, id, role, email } = user;
+    const token = jwt.generateJwtToken({ username, id, role, email });
 
     return { status: 'successful', data: { token } };
   }
