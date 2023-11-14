@@ -9,4 +9,8 @@ export default class MatchModel implements IMatchModel {
     const dbData = await this.model.findAll();
     return dbData;
   }
+
+  async finishByPk(id: number): Promise<void> {
+    await this.model.update({ inProgress: false }, { where: { id } });
+  }
 }

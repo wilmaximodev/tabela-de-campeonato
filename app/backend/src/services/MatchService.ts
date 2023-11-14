@@ -22,4 +22,9 @@ export default class MatchService {
 
     return { status: 'successful', data: filteredMatches };
   }
+
+  public async finishMatch(id: number): Promise<ServiceResponse<string>> {
+    await this.matchModel.finishByPk(id);
+    return { status: 'successful', data: { message: 'Finished' } };
+  }
 }

@@ -36,12 +36,21 @@ describe('Match Test', function() {
     expect(body).to.be.deep.equal(inProgressTrue);
   });
 
-  it.only('Verifica se retorna partidas finalizadas', async function() {
+  it('Verifica se retorna partidas finalizadas', async function() {
 		sinon.stub(SequelizeMatch, 'findAll').resolves(inProgressFalse as any)
 
 		const { status, body } = await chai.request(app).get('/matches?inProgress=false')
 
 		expect(status).to.equal(200)
 		expect(body).to.deep.equal(inProgressFalse)
-	  })
+	})
+
+  it('Verifica se é possivel finalizar uma partida', async () => {
+    sinon.stub(SequelizeMatch, 'update').resolves(inProgressTrue[0] as any);
+
+    const {status, body} = await chai.request(app).patch('/matches/1/finish');
+
+    expect(status).to.be.equal(200);
+    expect(body).to.be.deep.equal({ message: 'Finished' });
+  });
 });

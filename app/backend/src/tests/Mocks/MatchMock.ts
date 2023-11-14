@@ -4,7 +4,7 @@ const match = {
   "homeTeamGoals": 1,
   "awayTeamId": 8,
   "awayTeamGoals": 1,
-  "inProgress": false
+  "inProgress": true
 };
 
 const matches = [match];
