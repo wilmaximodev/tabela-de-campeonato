@@ -1,13 +1,15 @@
 import * as bcrypt from 'bcrypt';
 import * as sinon from 'sinon';
 import * as chai from 'chai';
+import * as jwt from 'jsonwebtoken';
 
 // @ts-ignore
 import chaiHttp = require('chai-http');
 
 import { App } from '../app';
 import SequelizeMatch from '../database/models/SequelizeMatch';
-import { match, matches, inProgressFalse, inProgressTrue } from './Mocks/MatchMock'
+import { matches, inProgressFalse, inProgressTrue, newPlacar } from './Mocks/MatchMock'
+import { validUser } from './Mocks/UserMock';
 
 chai.use(chaiHttp);
 
@@ -47,10 +49,22 @@ describe('Match Test', function() {
 
   it('Verifica se é possivel finalizar uma partida', async () => {
     sinon.stub(SequelizeMatch, 'update').resolves(inProgressTrue[0] as any);
+    
+    const validToken = jwt.sign(validUser, "jwt_secret");
 
-    const {status, body} = await chai.request(app).patch('/matches/1/finish');
+    const {status, body} = await chai.request(app).patch('/matches/1/finish')
 
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal({ message: 'Finished' });
+  });
+
+  it('Verifica se é possivel alterar placar das partidas', async () => {
+    sinon.stub(SequelizeMatch, 'update').resolves(inProgressTrue[0] as any);
+    const validToken = jwt.sign(validUser, "jwt_secret");
+
+    const {status, body} = await chai.request(app).patch('/matches/1').send(newPlacar).set('Authorization', `Bearer ${validToken}`);
+
+    expect(status).to.be.equal(200);
+    expect(body).to.be.deep.equal({ message: 'Updated' });
   });
 });

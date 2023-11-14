@@ -16,4 +16,9 @@ export default class MatchController {
     const { status, data } = await this.macthService.finishMatch(+req.params.id);
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async updatePlacar(req: Request, res: Response) {
+    const { status, data } = await this.macthService.updatePlacar(req.body, +req.params.id);
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

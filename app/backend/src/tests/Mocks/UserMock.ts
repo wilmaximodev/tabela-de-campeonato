@@ -3,6 +3,8 @@ const validUser = {
   password: 'secret_admin',
 };
 
+const validToken = 'validToken';
+
 const invalidEmail = {
   email: '123.com',
   password: 'secret_admin',
@@ -28,4 +30,5 @@ export {
   users,
   invalidEmail,
   invalidPassword,
+  validToken,
 }; 

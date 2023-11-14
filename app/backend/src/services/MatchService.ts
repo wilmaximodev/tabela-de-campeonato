@@ -3,6 +3,7 @@ import IMatch from '../Interfaces/matches/IMatch';
 import IMatchModel from '../Interfaces/matches/IMatchModel';
 import { ServiceResponse } from '../types/ServiceResponse';
 import { InProgressType } from '../types/InProgress';
+import { NewPlacar } from '../types/NewPlacar';
 
 export default class MatchService {
   constructor(
@@ -26,5 +27,11 @@ export default class MatchService {
   public async finishMatch(id: number): Promise<ServiceResponse<string>> {
     await this.matchModel.finishByPk(id);
     return { status: 'successful', data: { message: 'Finished' } };
+  }
+
+  public async updatePlacar(placar: NewPlacar, matchId: number): Promise<ServiceResponse<IMatch>> {
+    const newPlacar = { homeTeamGoals: placar.homeTeamGoals, awayTeamGoals: placar.awayTeamGoals };
+    await this.matchModel.updatePlacar(newPlacar, matchId);
+    return { status: 'successful', data: { message: 'Updated' } };
   }
 }

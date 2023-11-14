@@ -37,18 +37,18 @@ const inProgressFalse = [
 		id: 9,
 		teamName: "Internacional"
 	  },
-	  awayTeam: {
+	  awayTeam: {	
 		id: 14,
 		teamName: "Santos"
 	  }
 	},
-]
+];
 
 const inProgressTrue = [
 	{
 	  id: 41,
 	  homeTeamId: 16,
-	  homeTeamGoals: 2,
+	  homeTeamGoals: 2,	
 	  awayTeamId: 9,
 	  awayTeamGoals: 0,
 	  inProgress: true,
@@ -77,11 +77,17 @@ const inProgressTrue = [
 		teamName: "Avaí/Kindermann"
 	  }
 	},
-]
+];
+
+const newPlacar = {
+  "homeTeamGoals": 3,
+  "awayTeamGoals": 1
+};
 
 export {
   match,
   matches,
   inProgressFalse,
   inProgressTrue,
+  newPlacar,
 };
