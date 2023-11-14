@@ -99,6 +99,20 @@ const createMatch = {
   "awayTeamGoals": 2
 };
 
+const invalidMatch = {
+  "homeTeamId": 16,
+  "awayTeamId": 16,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2
+};
+
+const invalidMatch2 = {
+  "homeTeamId": 77,
+  "awayTeamId": 8,
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2
+};
+
 export {
   match,
   matches,
@@ -107,4 +121,6 @@ export {
   newPlacar,
   validMatch,
   createMatch,
+  invalidMatch,
+  invalidMatch2,
 };

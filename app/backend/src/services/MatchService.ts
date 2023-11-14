@@ -5,10 +5,14 @@ import { ServiceResponse } from '../types/ServiceResponse';
 import { InProgressType } from '../types/InProgress';
 import { NewPlacar } from '../types/NewPlacar';
 import { NewMatch } from '../types/NewMatch';
+import ITeam from '../Interfaces/teams/ITeam';
+import ITeamModel from '../Interfaces/teams/ITeamModel';
+import TeamModel from '../models/TeamModel';
 
 export default class MatchService {
   constructor(
     private matchModel: IMatchModel = new MatchModel(),
+    private teamModel: ITeamModel = new TeamModel(),
   ) { }
 
   public async getAllMatches(progress: InProgressType): Promise<ServiceResponse<IMatch[]>> {
@@ -37,6 +41,12 @@ export default class MatchService {
   }
 
   public async createMatch(data: NewMatch): Promise<ServiceResponse<IMatch>> {
+    const homeTeamExist = await this.teamModel.findByPk(data.homeTeamId);
+    const awayTeamExist = await this.teamModel.findByPk(data.awayTeamId);
+
+    if (!homeTeamExist || !awayTeamExist) {
+      return { status: 'notFound', data: { message: 'There is no team with such id!' } };
+    }
     const newMatch = await this.matchModel.create(data);
     return { status: 'created', data: newMatch };
   }

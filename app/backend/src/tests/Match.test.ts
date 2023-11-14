@@ -15,8 +15,10 @@ import {
   newPlacar,
   validMatch,
   createMatch,
+  invalidMatch,
+  invalidMatch2,
 } from './Mocks/MatchMock'
-import { validUser } from './Mocks/UserMock';
+import validToken from '../tests/Mocks/validToken';
 
 chai.use(chaiHttp);
 
@@ -56,8 +58,6 @@ describe('Match Test', function() {
 
   it('Verifica se é possivel finalizar uma partida', async () => {
     sinon.stub(SequelizeMatch, 'update').resolves(inProgressTrue[0] as any);
-    
-    const validToken = jwt.sign(validUser, "jwt_secret");
 
     const {status, body} = await chai.request(app).patch('/matches/1/finish').set('Authorization', `Bearer ${validToken}`);
 
@@ -67,7 +67,6 @@ describe('Match Test', function() {
 
   it('Verifica se é possivel alterar placar das partidas', async () => {
     sinon.stub(SequelizeMatch, 'update').resolves(inProgressTrue[0] as any);
-    const validToken = jwt.sign(validUser, "jwt_secret");
 
     const {status, body} = await chai.request(app).patch('/matches/1').send(newPlacar).set('Authorization', `Bearer ${validToken}`);
 
@@ -75,15 +74,30 @@ describe('Match Test', function() {
     expect(body).to.be.deep.equal({ message: 'Updated' });
   });
 
-  it.only('Verifica se é possivel criar nova partida', async () => {
+  it('Verifica se é possivel criar nova partida', async () => {
     sinon.stub(SequelizeMatch, 'create').resolves(createMatch as any)
 
-    const validToken = jwt.sign(validUser, "jwt_secret")
 
     const { status, body } =  await chai.request(app).post('/matches/').set('Authorization', `Bearer ${validToken}`).send(validMatch)
 
 
     expect(status).to.be.equal(201);
     expect(body).to.be.deep.equal(createMatch);
+  });
+
+  it('Verifica se não é possivel criar partidas com times iguais', async () => {
+    sinon.stub(SequelizeMatch, 'create').resolves({} as any)
+    const { status, body } =  await chai.request(app).post('/matches/').set('Authorization', `Bearer ${validToken}`).send(invalidMatch);
+
+    expect(status).to.be.equal(422);
+    expect(body).to.be.deep.equal({ message: 'It is not possible to create a match with two equal teams' });
+  });
+
+  it('Verifica se não é possivel criar partidas com times inexistestes', async () => {
+    sinon.stub(SequelizeMatch, 'create').resolves({} as any)
+    const { status, body } =  await chai.request(app).post('/matches/').set('Authorization', `Bearer ${validToken}`).send(invalidMatch2);
+
+    expect(status).to.be.equal(404);
+    expect(body).to.be.deep.equal({ message: 'There is no team with such id!' });
   });
 });
