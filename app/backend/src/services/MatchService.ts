@@ -5,7 +5,6 @@ import { ServiceResponse } from '../types/ServiceResponse';
 import { InProgressType } from '../types/InProgress';
 import { NewPlacar } from '../types/NewPlacar';
 import { NewMatch } from '../types/NewMatch';
-import ITeam from '../Interfaces/teams/ITeam';
 import ITeamModel from '../Interfaces/teams/ITeamModel';
 import TeamModel from '../models/TeamModel';
 
