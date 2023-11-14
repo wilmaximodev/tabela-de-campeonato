@@ -2,6 +2,7 @@ import sequelizeMatch from '../database/models/SequelizeMatch';
 import IMatch from '../Interfaces/matches/IMatch';
 import IMatchModel from '../Interfaces/matches/IMatchModel';
 import { NewPlacar } from '../types/NewPlacar';
+import { NewMatch } from '../types/NewMatch';
 
 export default class MatchModel implements IMatchModel {
   private model = sequelizeMatch;
@@ -24,5 +25,17 @@ export default class MatchModel implements IMatchModel {
         id: matchId,
       },
     });
+  }
+
+  async create(data: NewMatch): Promise<IMatch> {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = data;
+    const dbData = await this.model
+      .create({
+        homeTeamId,
+        awayTeamId,
+        homeTeamGoals,
+        awayTeamGoals,
+        inProgress: true });
+    return dbData;
   }
 }

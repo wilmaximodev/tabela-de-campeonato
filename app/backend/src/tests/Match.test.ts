@@ -8,7 +8,14 @@ import chaiHttp = require('chai-http');
 
 import { App } from '../app';
 import SequelizeMatch from '../database/models/SequelizeMatch';
-import { matches, inProgressFalse, inProgressTrue, newPlacar } from './Mocks/MatchMock'
+import {
+  matches,
+  inProgressFalse,
+  inProgressTrue,
+  newPlacar,
+  validMatch,
+  createMatch,
+} from './Mocks/MatchMock'
 import { validUser } from './Mocks/UserMock';
 
 chai.use(chaiHttp);
@@ -52,7 +59,7 @@ describe('Match Test', function() {
     
     const validToken = jwt.sign(validUser, "jwt_secret");
 
-    const {status, body} = await chai.request(app).patch('/matches/1/finish')
+    const {status, body} = await chai.request(app).patch('/matches/1/finish').set('Authorization', `Bearer ${validToken}`);
 
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal({ message: 'Finished' });
@@ -66,5 +73,17 @@ describe('Match Test', function() {
 
     expect(status).to.be.equal(200);
     expect(body).to.be.deep.equal({ message: 'Updated' });
+  });
+
+  it.only('Verifica se é possivel criar nova partida', async () => {
+    sinon.stub(SequelizeMatch, 'create').resolves(createMatch as any)
+
+    const validToken = jwt.sign(validUser, "jwt_secret")
+
+    const { status, body } =  await chai.request(app).post('/matches/').set('Authorization', `Bearer ${validToken}`).send(validMatch)
+
+
+    expect(status).to.be.equal(201);
+    expect(body).to.be.deep.equal(createMatch);
   });
 });

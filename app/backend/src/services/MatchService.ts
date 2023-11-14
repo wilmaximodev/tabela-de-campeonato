@@ -4,6 +4,7 @@ import IMatchModel from '../Interfaces/matches/IMatchModel';
 import { ServiceResponse } from '../types/ServiceResponse';
 import { InProgressType } from '../types/InProgress';
 import { NewPlacar } from '../types/NewPlacar';
+import { NewMatch } from '../types/NewMatch';
 
 export default class MatchService {
   constructor(
@@ -33,5 +34,10 @@ export default class MatchService {
     const newPlacar = { homeTeamGoals: placar.homeTeamGoals, awayTeamGoals: placar.awayTeamGoals };
     await this.matchModel.updatePlacar(newPlacar, matchId);
     return { status: 'successful', data: { message: 'Updated' } };
+  }
+
+  public async createMatch(data: NewMatch): Promise<ServiceResponse<IMatch>> {
+    const newMatch = await this.matchModel.create(data);
+    return { status: 'created', data: newMatch };
   }
 }

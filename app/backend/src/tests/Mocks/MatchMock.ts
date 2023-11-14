@@ -84,10 +84,27 @@ const newPlacar = {
   "awayTeamGoals": 1
 };
 
+const validMatch = {
+  "homeTeamId": 16, // O valor deve ser o id do time
+  "awayTeamId": 8, // O valor deve ser o id do time
+  "homeTeamGoals": 2,
+  "awayTeamGoals": 2
+};
+
+const createMatch = {
+  "id": 51,
+  "homeTeamId": 16,
+  "homeTeamGoals": 2,
+  "awayTeamId": 8,
+  "awayTeamGoals": 2
+};
+
 export {
   match,
   matches,
   inProgressFalse,
   inProgressTrue,
   newPlacar,
+  validMatch,
+  createMatch,
 };
