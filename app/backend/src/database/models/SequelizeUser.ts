@@ -8,7 +8,7 @@ import {
 import db from '.';
 // import OtherModel from './OtherModel';
 
-class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
+export default class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
 InferCreationAttributes<SequelizeUser>> {
   declare id: CreationOptional<number>;
   declare username: string;
@@ -45,16 +45,3 @@ SequelizeUser.init({
   modelName: 'users',
   timestamps: false,
 });
-
-/**
-    * `Workaround` para aplicar as associations em TS:
-    * Associations 1:N devem ficar em uma das instâncias de modelo
-    * */
-
-// OtherModel.belongsTo(Example, { foreignKey: 'campoA', as: 'campoEstrangeiroA' });
-// OtherModel.belongsTo(Example, { foreignKey: 'campoB', as: 'campoEstrangeiroB' });
-
-// Example.hasMany(OtherModel, { foreignKey: 'campoC', as: 'campoEstrangeiroC' });
-// Example.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
-
-export default SequelizeUser;

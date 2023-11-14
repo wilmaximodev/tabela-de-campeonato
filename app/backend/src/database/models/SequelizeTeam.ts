@@ -8,7 +8,7 @@ import {
 import db from '.';
 // import OtherModel from './OtherModel';
 
-class SequelizeTeam extends Model<InferAttributes<SequelizeTeam>,
+export default class SequelizeTeam extends Model<InferAttributes<SequelizeTeam>,
 InferCreationAttributes<SequelizeTeam>> {
   declare id: CreationOptional<number>;
   declare teamName: string;
@@ -31,16 +31,3 @@ SequelizeTeam.init({
   modelName: 'teams',
   timestamps: false,
 });
-
-/**
-    * `Workaround` para aplicar as associations em TS:
-    * Associations 1:N devem ficar em uma das instâncias de modelo
-    * */
-
-// OtherModel.belongsTo(SequelizeTeam, { foreignKey: 'campoA', as: 'campoEstrangeiroA' });
-// OtherModel.belongsTo(SequelizeTeam, { foreignKey: 'campoB', as: 'campoEstrangeiroB' });
-
-// SequelizeTeam.hasMany(OtherModel, { foreignKey: 'campoC', as: 'campoEstrangeiroC' });
-// SequelizeTeam.hasMany(OtherModel, { foreignKey: 'campoD', as: 'campoEstrangeiroD' });
-
-export default SequelizeTeam;
