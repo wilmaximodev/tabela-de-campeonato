@@ -1,9 +1,26 @@
 FROM node:16.14-alpine
-WORKDIR /app/backend
-COPY package*.json ./
+
+# Mudar para o diretório de trabalho /app-backend
+WORKDIR /app-backend
+
+# Copiar os package.json, package-lock.json e packages.npm para o container
+COPY package.json .
+COPY package-lock.json .
+
+# Instalar as dependências Node
+
 RUN npm install
+# RUN ls -al /app-backend > /app-backend/ls_log.txt
+# Copiar o restante dos arquivos da aplicação para o container
+
 COPY . .
+
+
+# Sinalize que aplicação expõe a porta 3001
 EXPOSE 3001
 
-ENTRYPOINT [ "npm" ]
+# Configurar os comandos para iniciar a aplicação de acordo com as boas práticas
+# Dica: Leia a seção Docker e Docker-compose no README para mais informações
+# Dica: Leia a seção Docker e Docker-compose no README para mais informações
+ENTRYPOINT [ "npm", "run" ]
 CMD ["start"]
