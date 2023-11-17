@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import validateEmail from '../utils/validateEmail';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
+import validateEmail from '../utils/validateEmail';
 
 export default class LoginValidation {
   static inputLogin(req: Request, res: Response, next: NextFunction) {

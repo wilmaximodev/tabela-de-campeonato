@@ -1,4 +1,7 @@
-export default function validarEmail(email: string): boolean {
-  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regexEmail.test(email);
+import * as Joi from 'joi';
+
+export default function validateEmail(email: string) {
+  const schema = Joi.string().email().required();
+  const { error } = schema.validate(email);
+  return !error;
 }

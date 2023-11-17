@@ -19,18 +19,10 @@ InferCreationAttributes<SequelizeUser>> {
 
 SequelizeUser.init({
   id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
     primaryKey: true,
+    type: DataTypes.NUMBER,
+    allowNull: false,
     autoIncrement: true,
-  },
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  role: {
-    type: DataTypes.STRING,
-    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
@@ -40,8 +32,16 @@ SequelizeUser.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  role: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 }, {
   sequelize: db,
-  modelName: 'users',
   timestamps: false,
+  tableName: 'users',
 });

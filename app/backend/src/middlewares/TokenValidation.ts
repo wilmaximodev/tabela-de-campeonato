@@ -10,7 +10,8 @@ export default class TokenValidation {
     }
 
     try {
-      const user = Token.decodeJwtToken(authorization);
+      const token = authorization.split(' ')[1];
+      const user = new Token().decode(token);
       res.locals = user;
       next();
     } catch (e) {
