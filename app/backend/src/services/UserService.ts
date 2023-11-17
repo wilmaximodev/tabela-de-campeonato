@@ -14,7 +14,7 @@ export default class UserService {
   public async login(Login: ILogin): Promise<ServiceResponse<TokenType>> {
     const user = await this.userModel.getUser(Login.email);
     if (!user || !bcrypt.compareSync(Login.password, user.password)) {
-      return { status: 'invalidData', data: { message: 'All fields must be filled' } };
+      return { status: 'unauthorized', data: { message: 'Invalid email or password' } };
     }
 
     const token = new Token().generate({ id: user.id, email: user.email });
@@ -22,7 +22,7 @@ export default class UserService {
     return { status: 'successful', data: { token } };
   }
 
-  public async getRole(email: string): Promise<ServiceResponse<string>> {
+  public async getRole(email: string): Promise<ServiceResponse<object>> {
     const role = await this.userModel.getRole(email);
     if (!role) {
       return { status: 'invalidData', data: { message: 'User not found' } };

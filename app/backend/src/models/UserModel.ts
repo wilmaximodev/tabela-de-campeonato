@@ -10,8 +10,8 @@ export default class UserModel implements IUserModel {
     return user;
   }
 
-  async getRole(email: string): Promise<string | void> {
+  async getRole(email: string): Promise<object> {
     const user = await this.model.findOne({ where: { email } });
-    return user?.role;
+    return { role: user?.role };
   }
 }

@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import UserService from '../services/UserService';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
-import ILogin from '../Interfaces/users/ILogin';
 
 export default class UserController {
   constructor(
@@ -9,8 +8,7 @@ export default class UserController {
   ) { }
 
   public async login(req: Request, res: Response) {
-    const Login: ILogin = req.body;
-    const { status, data } = await this.userService.login(Login);
+    const { status, data } = await this.userService.login(req.body);
     return res.status(mapStatusHTTP(status)).json(data);
   }
 

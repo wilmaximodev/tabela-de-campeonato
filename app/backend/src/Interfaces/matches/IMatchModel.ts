@@ -6,5 +6,5 @@ export default interface IMatchModel {
   findAll(): Promise<IMatch[]>,
   finishByPk(id: number): Promise<void>,
   updatePlacar(placar: NewPlacar, matchId: number): Promise<void>,
-  create(data: NewMatch): Promise<IMatch>,
+  create(data: NewMatch): Promise<IMatch | void>,
 }

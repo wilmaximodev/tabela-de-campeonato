@@ -9,10 +9,10 @@ export default class LoginValidation {
       return res.status(mapStatusHTTP('invalidData'))
         .json({ message: 'All fields must be filled' });
     }
-    if (!validateEmail(email) || password.length < 6) {
+    if (validateEmail(email) === false || password.length < 6) {
       return res.status(mapStatusHTTP('unauthorized'))
         .json({ message: 'Invalid email or password' });
     }
-    next();
+    return next();
   }
 }
