@@ -18,7 +18,7 @@ export default class MatchService {
     const allMatches = await this.matchModel.findAll();
     const actualProgress = progress.inProgress;
 
-    if (actualProgress === undefined || actualProgress === null) {
+    if (!actualProgress) {
       return { status: 'successful', data: allMatches };
     }
 

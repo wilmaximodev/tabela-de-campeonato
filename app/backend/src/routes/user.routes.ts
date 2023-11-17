@@ -1,4 +1,4 @@
-import { Request, Router, Response } from 'express';
+import { Router } from 'express';
 import UserController from '../controllers/UserController';
 import LoginValidation from '../middlewares/LoginValidation';
 import TokenValidation from '../middlewares/TokenValidation';
@@ -7,13 +7,13 @@ const userController = new UserController();
 
 const router = Router();
 
-router.post('/', LoginValidation.inputLogin, (req: Request, res: Response) => userController
+router.post('/', LoginValidation.inputLogin, (req, res) => userController
   .login(req, res));
 
 router.get(
   '/role',
   TokenValidation.verifyToken,
-  (req: Request, res: Response) => userController.getRole(req, res),
+  (req, res) => userController.getRole(req, res),
 );
 
 export default router;

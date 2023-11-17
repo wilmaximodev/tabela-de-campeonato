@@ -13,7 +13,7 @@ export default class TeamService {
     return { status: 'successful', data: allTeams };
   }
 
-  public async getTeamById(id: number): Promise<ServiceResponse<ITeam | null>> {
+  public async getTeamById(id: number): Promise<ServiceResponse<ITeam>> {
     const team = await this.teamModel.findByPk(id);
     return { status: 'successful', data: team };
   }
