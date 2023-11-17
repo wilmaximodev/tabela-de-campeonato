@@ -1,4 +1,5 @@
 import sequelizeMatch from '../database/models/SequelizeMatch';
+import SequelizeTeam from '../database/models/SequelizeTeam';
 import IMatch from '../Interfaces/matches/IMatch';
 import IMatchModel from '../Interfaces/matches/IMatchModel';
 import { NewPlacar } from '../types/NewPlacar';
@@ -8,8 +9,22 @@ export default class MatchModel implements IMatchModel {
   private model = sequelizeMatch;
 
   async findAll(): Promise<IMatch[]> {
-    const dbData = await this.model.findAll();
-    return dbData;
+    const matches = await this.model.findAll({
+      include: [
+        {
+          model: SequelizeTeam,
+          as: 'homeTeam',
+          attributes: ['teamName'],
+        },
+        {
+          model: SequelizeTeam,
+          as: 'awayTeam',
+          attributes: ['teamName'],
+        },
+      ],
+    });
+
+    return matches;
   }
 
   async finishByPk(id: number): Promise<void> {

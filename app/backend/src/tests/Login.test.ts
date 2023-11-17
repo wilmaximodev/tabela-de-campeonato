@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 

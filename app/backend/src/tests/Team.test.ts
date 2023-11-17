@@ -6,7 +6,7 @@
 
   import { App } from '../app';
   import SequelizeTeam from '../database/models/SequelizeTeam';
-  import { team, teams } from './Mocks/TeamMock';
+  import { team } from './Mocks/TeamMock';
 
   chai.use(chaiHttp);
 

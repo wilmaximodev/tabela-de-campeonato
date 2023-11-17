@@ -1,7 +1,5 @@
-import * as bcrypt from 'bcrypt';
 import * as sinon from 'sinon';
 import * as chai from 'chai';
-import * as jwt from 'jsonwebtoken';
 
 // @ts-ignore
 import chaiHttp = require('chai-http');
