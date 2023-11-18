@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import Token from '../auth/jwt';
+import mapStatusHTTP from '../utils/mapStatusHTTP';
 
 export default class TokenValidation {
   static verifyToken(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
 
     if (!authorization) {
-      return res.status(401).json({ message: 'Token not found' });
+      return res.status(mapStatusHTTP('unauthorized'))
+        .json({ message: 'Token not found' });
     }
 
     try {
@@ -15,7 +17,8 @@ export default class TokenValidation {
       res.locals = user;
       return next();
     } catch (e) {
-      return res.status(401).json({ message: 'Token must be a valid token' });
+      return res.status(mapStatusHTTP('unauthorized'))
+        .json({ message: 'Token must be a valid token' });
     }
   }
 }
