@@ -14,8 +14,8 @@ const { app } = new App();
 
 const { expect } = chai;
 
-describe('Teams Test', function() {
-  it('Show all teams', async function() {
-
+describe('Leaderboard test', function() {
+  it('Verifica se retorna o desempenho dos times da casa corretamente', async function() {
+    
     });
 });
