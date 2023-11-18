@@ -7,9 +7,12 @@ SELECT
   SUM(m.home_team_goals > m.away_team_goals) AS totalVictories,
   SUM(m.home_team_goals = m.away_team_goals) AS totalDraws,
   SUM(m.home_team_goals < m.away_team_goals) AS totalLosses,
-  (SUM(m.home_team_goals > m.away_team_goals) * 3 + SUM(m.home_team_goals = m.away_team_goals)) AS totalPoints,
+  (SUM(m.home_team_goals >
+    m.away_team_goals) * 3 + SUM(m.home_team_goals = m.away_team_goals)) AS totalPoints,
   (SUM(m.home_team_goals) - SUM(m.away_team_goals)) AS goalsBalance,
-  (SUM(m.home_team_goals > m.away_team_goals) * 3 + SUM(m.home_team_goals = m.away_team_goals)) / (COUNT(*) * 3) * 100 AS efficiency
+  (SUM(m.home_team_goals >
+    m.away_team_goals) * 3 + SUM(m.home_team_goals = m.away_team_goals)) /
+    (COUNT(*) * 3) * 100 AS efficiency
 FROM
   matches m
   JOIN teams t ON m.home_team_id = t.id
