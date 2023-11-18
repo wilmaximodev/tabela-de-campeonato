@@ -8,7 +8,17 @@ export default class LeaderboardController {
   ) { }
 
   public async getHomeTeamsClassification(req: Request, res: Response) {
-    const { status, data } = await this.leaderboardService.getHomeTeamsClassification();
+    const { status, data } = await this.leaderboardService.homeTeamsClassification();
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
+
+  public async getAwayTeamsClassification(req: Request, res: Response) {
+    const { status, data } = await this.leaderboardService.awayTeamsClassification();
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
+
+  public async getGeneralClassification(req: Request, res: Response) {
+    const { status, data } = await this.leaderboardService.generalClassification();
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }

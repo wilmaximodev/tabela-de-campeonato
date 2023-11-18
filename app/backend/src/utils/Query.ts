@@ -1,4 +1,4 @@
-const query = `
+const mainQuery = `
 SELECT
   t.team_name AS name,
   COUNT(*) AS totalGames,
@@ -11,8 +11,8 @@ SELECT
     m.away_team_goals) * 3 + SUM(m.home_team_goals = m.away_team_goals)) AS totalPoints,
   (SUM(m.home_team_goals) - SUM(m.away_team_goals)) AS goalsBalance,
   (SUM(m.home_team_goals >
-    m.away_team_goals) * 3 + SUM(m.home_team_goals = m.away_team_goals)) /
-    (COUNT(*) * 3) * 100 AS efficiency
+    m.away_team_goals) * 3 +
+    SUM(m.home_team_goals = m.away_team_goals)) / (COUNT(*) * 3) * 100 AS efficiency
 FROM
   matches m
   JOIN teams t ON m.home_team_id = t.id
@@ -47,14 +47,15 @@ const allMatches = `
     in_progress = false
 ) AS m`;
 
-function createQuery(type: 'all' | 'home' | 'away') {
+function createQuery(type: string) {
   switch (type) {
-    case 'home': return query;
-    case 'all': return query
-      .replace('WHERE m.in_progress = false', '').replace('matches m', allMatches);
-    case 'away': return query.replace(/(home)|(away)/g, (_, group) => (group ? 'away' : 'home'));
+    case 'home': return mainQuery;
+    case 'all': return mainQuery
+      .replace('WHERE m.in_progress = false', '').replace('FROM matches m', allMatches);
+    case 'away': return mainQuery
+      .replace(/(home)|(away)/g, (_, group) => (group ? 'away' : 'home'));
 
-    default: return query;
+    default: return mainQuery;
   }
 }
 

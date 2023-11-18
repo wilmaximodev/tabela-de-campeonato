@@ -2,26 +2,29 @@ import { QueryTypes } from 'sequelize';
 import Sequelize from '../database/models';
 import ILeaderboard from '../Interfaces/leaderboard/ILeaderboard';
 import createQuery from '../utils/Query';
+import mapTeams from '../utils/mapTeams';
 
 export default class LeaderboardModel {
   private model = Sequelize;
 
   async homeTeamsClassification(): Promise<ILeaderboard[]> {
-    const result = await this.model.query(createQuery('home'), {
+    const homeTeams = await this.model.query(createQuery('home'), {
       type: QueryTypes.SELECT,
     }) as ILeaderboard[];
-    const Teams = await result.map((te) => ({
-      name: te.name,
-      totalPoints: Number(te.totalPoints),
-      totalGames: Number(te.totalGames),
-      totalVictories: Number(te.totalVictories),
-      totalDraws: Number(te.totalDraws),
-      totalLosses: Number(te.totalLosses),
-      goalsFavor: Number(te.goalsFavor),
-      goalsOwn: Number(te.goalsOwn),
-      goalsBalance: Number(te.goalsBalance),
-      efficiency: te.efficiency,
-    }));
-    return Teams;
+    return mapTeams(homeTeams);
+  }
+
+  async awayTeamsClassification(): Promise<ILeaderboard[]> {
+    const awayTeams = await this.model.query(createQuery('away'), {
+      type: QueryTypes.SELECT,
+    }) as ILeaderboard[];
+    return mapTeams(awayTeams);
+  }
+
+  async generalClassification(): Promise<ILeaderboard[]> {
+    const allTeams = await this.model.query(createQuery('all'), {
+      type: QueryTypes.SELECT,
+    }) as ILeaderboard[];
+    return mapTeams(allTeams);
   }
 }
