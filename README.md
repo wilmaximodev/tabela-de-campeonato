@@ -1,10 +1,12 @@
-Trybe Futebol Clube
-O Trybe é uma escola de tecnologia focada na formação de Desenvolvedores Web, e o projeto Trybe Futebol Clube foi proposto como uma atividade para aprimorar os estudos sobre desenvolvimento back-end, com ênfase em Programação Orientada a Objetos (POO), SOLID e TypeScript.
+# Trybe Futebol Clube
 
-Objetivo
-O Trybe Futebol Clube é uma aplicação Full Stack que permite aos usuários acessar informações sobre partidas e classificações de futebol. Ao realizar o login na aplicação, o usuário não apenas visualiza as informações, mas também pode alterar resultados de partidas e inserir partidas em andamento.
+A [Trybe](https://www.betrybe.com/) é uma escola de tecnologia com foco em formação de Desenvolvedores Web e o projeto Trybe Futebol Clube foi proposto como atividade de aprimoramento dos estudos sobre desenvolvimento back-end com foco em Programação Orientada a Objetos (POO), SOLID e TypeScript. 
 
-Tecnologias e Ferramentas
+## Objetivo
+
+Trybe Futebol Clube é uma aplicação Full Stack que permite ao usuário ter acesso a um informativo sobre partidas e classificações de futebol. Ao realizar login na aplicação, o usuário, além de visualizar as informações, também poderá alterar resultados das partidas e inserir partidas que estão em andamento.
+
+## Tecnologias e Ferramentas
 <div>
    <img src='https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white' alt='HTML' />
     <img src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white' alt='CSS3' />
@@ -21,66 +23,75 @@ Tecnologias e Ferramentas
     <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="jwt"/>
     <img src="https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white" alt="mocha"/>
 </div>
+
 <br>
-Na elaboração deste projeto, foram utilizadas as seguintes ferramentas:
 
-Front-end
-HTML
-CSS
-ReactJS
-React router
-Back-end
-Express
-TypeScript
-Docker
-Sequelize
-MySQL
-JWT
-Arquitetura Model-Service-Controller
-Testes em Back-end
-Mocha
-Chai
-Sinon
-Alinhamento de código
-ESlint
-Obs.: Os arquivos presentes na pasta front-end foram disponibilizados pela Trybe para a realização deste projeto.
+Na elaboração deste projeto utilizou-se as seguintes ferramentas:
 
-⚙️ Execução
-Para executar a aplicação, comece realizando o clone deste repositório com o comando abaixo.
+### Front-end
+- HTML
+- CSS
+- [ReactJS](https://pt-br.reactjs.org/)
+- [React router](https://reactrouter.com/en/main)
 
-bash
-Copy code
-git clone git@github.com:wilmaximodev/trybe-futebol-clube.git
-Navegue até a raiz do projeto.
+### Back-end
+- [Express](https://expressjs.com/pt-br/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Docker](https://www.docker.com/)
+- [Sequelize](https://sequelize.org/)
+- [MySQL](https://www.mysql.com/)
+- [JWT](https://jwt.io/)
+- Arquitetura Model-Service-Controller
 
-bash
-Copy code
-cd trybe-futebol-clube/
+### Testes em Back-end
+- [Mocha](https://mochajs.org/)
+- [Chai](https://www.chaijs.com/)
+- [Sinon](https://sinonjs.org/)
+
+### Alinhamento de código
+- [ESlint](https://eslint.org/)
+
+**Obs.:** Os arquivos presentes na pasta front-end foram disponibilizados pela [Trybe](https://www.betrybe.com/) para a realização deste projeto.
+
+## ⚙️ Execução
+
+Para executar a aplicação inicie realizando o clone deste repositório com o comando abaixo.
+
+    git clone git@github.com:wilmaximodev/trybe-futebol-clube.git
+    
+Navegue até a raíz do projeto.
+
+    cd trybe-futebol-clube/
+
 <details>
    <summary><strong>Rodando a aplicação com o Docker</strong></summary> 
   </br>
-<strong>Obs:</strong> Para rodar a aplicação dessa forma, você deve ter o Docker instalado na sua máquina.
-
+  
+  <strong>Obs:</strong> Para rodar a aplicação dessa forma você deve ter o [Docker](https://www.docker.com/) instalado na sua máquina.
+  
   </br>
     Após clonar o projeto, instale as dependências na pasta back-end e front-end rodando o comando abaixo em cada pasta.
-Copy code
-  npm install
-Na pasta app do projeto, suba os containers <strong>app_backend</strong>, <strong>app_frontend</strong>, e <strong>db</strong> utilizando o docker-compose.dev.yalm. Utilize o comando abaixo.
+    
+      npm install
+  
+  Na pasta app do projeto, suba os containers <strong>app_backend</strong>, <strong>app_frontend</strong> e <strong>db</strong> utilizando o docker-compose.dev.yalm. Utilize o comando abaixo.
 
-arduino
-Copy code
-  npm run compose:up:dev
-Abra o terminal do container <strong>app_backend</strong> para verificar o servidor através dos logs do container.
+      npm run compose:up:dev
+    
+  Abra o terminal do container <strong>app_backend</strong> para verificar o servidor através dos logs do container.
 
-Copy code
-  docker-compose logs backend -f
-Para executar os testes do back-end, abra um terminal local na pasta back-end e rode o comando abaixo.
+      docker-compose logs backend -f
+  
+  Para executar os testes do back-end, abra um terminal local na pasta back-end e rode o comando abaixo.
+  
+     npm test
 
-bash
-Copy code
- npm test
-
+    
 </details>
-Captura de tela de 2022-12-04 21-57-51
 
-Desenvolvido por Wilson Maximo, 2023.
+![Captura de tela de 2022-12-04 21-57-51](https://user-images.githubusercontent.com/99992183/198701078-08f1a3b1-a340-4db4-831f-8698415d0034.png)
+
+
+---
+ 
+Desenvolvido por [Wilson Maximo](www.linkedin.com/in/wilmaximodev), 2023.
