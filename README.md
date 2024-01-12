@@ -76,7 +76,7 @@ Navegue até a raíz do projeto.
   
   Na pasta app do projeto, suba os containers <strong>app_backend</strong>, <strong>app_frontend</strong> e <strong>db</strong> utilizando o docker-compose.dev.yalm. Utilize o comando abaixo.
 
-      npm run compose:up:dev
+      docker compose up -d --build
     
   Abra o terminal do container <strong>app_backend</strong> para verificar o servidor através dos logs do container.
 
