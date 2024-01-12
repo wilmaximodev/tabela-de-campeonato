@@ -81,12 +81,7 @@ Navegue até a raíz do projeto.
   Abra o terminal do container <strong>app_backend</strong> para verificar o servidor através dos logs do container.
 
       docker-compose logs backend -f
-  
-  Para executar os testes do back-end, abra um terminal local na pasta back-end e rode o comando abaixo.
-  
-     npm test
 
-    
 </details>
 
 ![Captura de tela de 2022-12-04 21-57-51](https://user-images.githubusercontent.com/99992183/198701078-08f1a3b1-a340-4db4-831f-8698415d0034.png)
