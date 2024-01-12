@@ -80,7 +80,7 @@ Navegue até a raíz do projeto.
     
   Abra o terminal do container <strong>app_backend</strong> para verificar o servidor através dos logs do container.
 
-      docker-compose logs backend -f
+      docker compose logs backend -f
 
 </details>
 
