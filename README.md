@@ -1,7 +1,5 @@
 # Tabela de Campeonato
 
-A [Trybe](https://www.betrybe.com/) é uma escola de tecnologia com foco em formação de Desenvolvedores Web e o projeto Trybe Futebol Clube foi proposto como atividade de aprimoramento dos estudos sobre desenvolvimento back-end com foco em Programação Orientada a Objetos (POO), SOLID e TypeScript. 
-
 ## Objetivo
 
 Trybe Futebol Clube é uma aplicação Full Stack que permite ao usuário ter acesso a um informativo sobre partidas e classificações de futebol. Ao realizar login na aplicação, o usuário, além de visualizar as informações, também poderá alterar resultados das partidas e inserir partidas que estão em andamento.
