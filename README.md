@@ -1,4 +1,4 @@
-# Trybe Futebol Clube
+# Tabela de Campeonato
 
 A [Trybe](https://www.betrybe.com/) é uma escola de tecnologia com foco em formação de Desenvolvedores Web e o projeto Trybe Futebol Clube foi proposto como atividade de aprimoramento dos estudos sobre desenvolvimento back-end com foco em Programação Orientada a Objetos (POO), SOLID e TypeScript. 
 
@@ -61,8 +61,7 @@ Para executar a aplicação inicie realizando o clone deste repositório com o c
     
 Navegue até a raíz do projeto.
 
-    cd trybe-futebol-clube/
-
+    cd tabela-de-campeonato
 <details>
    <summary><strong>Rodando a aplicação com o Docker</strong></summary> 
   </br>
