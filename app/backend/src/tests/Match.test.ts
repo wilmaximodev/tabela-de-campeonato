@@ -1,7 +1,6 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 
-// @ts-ignore
 import chaiHttp = require('chai-http');
 
 import { App } from '../app';
@@ -15,8 +14,8 @@ import {
   createMatch,
   invalidMatch,
   invalidMatch2,
-} from './Mocks/MatchMock'
-import validToken from '../tests/Mocks/validToken';
+} from './Mocks/MatchMock';
+import validToken from './Mocks/validToken';
 
 chai.use(chaiHttp);
 

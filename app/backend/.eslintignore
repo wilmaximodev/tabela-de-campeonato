@@ -1,6 +1,6 @@
 nyc.config.js
 node_modules/
-tests/
+tests/*.test.ts
 build/
 src/database/migrations
 src/database/seeders
